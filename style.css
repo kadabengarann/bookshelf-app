@@ -29,7 +29,7 @@ main {
 
 }
 
-.input_section {
+.form_section {
     display: flex;
     flex-direction: column;
     padding: 16px;
@@ -37,16 +37,16 @@ main {
     border-radius: 10px;
 }
 
-.input_section > h2 {
+.form_section > h2 {
     text-align: center;
     color: cornflowerblue;
 }
 
-.input_section > form > .input {
+.form_section > form > .input {
     margin: 8px 0;
 }
 
-.input_section > form > button {
+.form_section > form > button {
     background-color: cornflowerblue;
     color: white;
     border: 0;
@@ -57,11 +57,11 @@ main {
     cursor: pointer;
 }
 
-.input_section > form > button > span {
+.form_section > form > button > span {
     font-weight: bold;
 }
 
-.input_section > form > .input > input {
+.form_section > form > .input > input {
     display: block;
     width: 100%;
     padding: 8px;
@@ -70,23 +70,36 @@ main {
 
 
 
-.input_section > form > .input > label {
+.form_section > form > .input > label {
     color: cornflowerblue;
     font-weight: bold;
 }
 
-.input_section > form > .input_inline {
+.form_section > form > .input_inline {
     margin: 12px 0;
     display: flex;
     align-items: center;
 }
 
-.input_section > form > .input_inline > label {
+.form_section > form > .input_inline > label {
     color: cornflowerblue;
     font-weight: bold;
     margin-right: 10px;
 }
+.edit_section{
+    display: none;
+}
 
+.edit_section > form > button {
+    display: inline;
+    margin: auto;
+    width: 49%;
+    padding: 8px;
+    cursor: pointer;
+}
+.edit_section #cancelEdit{
+    background-color: red;
+}
 .search_section {
     margin: 16px 0;
     display: flex;
@@ -190,4 +203,11 @@ main {
 }
 .delete-button::before{
     content: "Hapus buku";
+}
+.edit-button{
+    background-color: rgb(43, 165, 236);
+    color: white;
+}
+.edit-button::before{
+    content: "Edit buku";
 }

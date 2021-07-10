@@ -15,7 +15,7 @@
     <h1 class="head_bar__title">Bookshelf Apps</h1>
 </header>
 <main>
-    <section class="input_section">
+    <section class="form_section input_section">
         <h2>Masukkan Buku Baru</h2>
         <form id="inputBook">
             <div class="input">
@@ -37,9 +37,33 @@
             <button id="bookSubmit" type="submit">Masukkan Buku ke rak <span>Belum selesai dibaca</span></button>
         </form>
     </section>
+    <section class="form_section edit_section">
+        <h2>Edit Data Buku</h2>
+        <form id="editBook">
+            <div class="input">
+                <label for="inputBookTitle">Judul</label>
+                <input id="editBookTitle" type="text" required>
+            </div>
+            <div class="input">
+                <label for="inputBookAuthor">Penulis</label>
+                <input id="editBookAuthor" type="text" required>
+            </div>
+            <div class="input">
+                <label for="inputBookYear">Tahun</label>
+                <input id="editBookYear" type="number" required>
+            </div>
+            <div class="input_inline">
+                <label for="inputBookIsComplete">Selesai dibaca</label>
+                <input id="editBookIsComplete" type="checkbox">
+            </div>
+            <button id="cancelEdit" type="submit">Batalkan</button>
+            <button id="bookEditSubmit" type="submit">Edit book Data</button>
+
+        </form>
+    </section>
 
     <section class="search_section">
-        <h2>Cari Buku (Opsional)</h2>
+        <h2>Cari Buku</h2>
         <form id="searchBook">
             <label for="searchBookTitle">Judul</label>
             <input id="searchBookTitle" type="text">
@@ -49,17 +73,19 @@
 
     <section class="book_shelf">
         <h2>Belum selesai dibaca</h2>
-
+        <button id="remove-all-incomplete">CLEAR ALL</button>
         <div id="incompleteBookshelfList" class="book_list">
         </div>
     </section>
 
     <section class="book_shelf">
         <h2>Selesai dibaca</h2>
+        <button id="remove-all-complete">CLEAR ALL</button>
 
         <div id="completeBookshelfList" class="book_list">
         </div>
     </section>
+    <button id="remove-all">CLEAR ALL</button>
 </main>
 
 <script src="./js/data.js"></script>

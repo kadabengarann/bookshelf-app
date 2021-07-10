@@ -60,7 +60,6 @@ function saveData() {
     }
     return -1;
  }
-
  function refreshDataFromBooks() {
     const listUncompleted = document.getElementById(UNCOMPLETED_LIST_BOOK_ID);
     let listCompleted = document.getElementById(COMPLETED_LIST_BOOK_ID);
@@ -77,4 +76,51 @@ function saveData() {
             listUncompleted.append(newBook);
         }
     }
+ }
+ function clearAllData() {
+    const listUncompleted = document.getElementById(UNCOMPLETED_LIST_BOOK_ID);
+    const UncompletedItems = listUncompleted.querySelectorAll(".book_item");
+
+    if (UncompletedItems) {
+        for (const item of UncompletedItems) {
+            item.remove()
+        }
+    }
+
+    const listCompleted = document.getElementById(COMPLETED_LIST_BOOK_ID);
+    const CompletedItems = listCompleted.querySelectorAll(".book_item");
+    if (CompletedItems) {
+    for (const item of CompletedItems) {
+        item.remove()
+    }
+}
+ }
+
+ function deleteAllComplete() {
+    for(let i=books.length-1; i >= 0 ; i--){
+        if(books[i].isCompleted === true){
+            console.log("yo");
+            books.splice(i, 1);
+        }
+    }
+    updateDataToStorage()
+    clearAllData()
+
+    refreshDataFromBooks()
+ }
+ function deleteAllIncomplete() {
+    for(let i=books.length-1; i >= 0 ; i--){
+        if(books[i].isCompleted === false){
+            console.log("yo");
+            books.splice(i, 1);
+        }
+    }
+    updateDataToStorage()
+    clearAllData()
+
+    refreshDataFromBooks()
+ }
+ function deleteAll() {
+     clearAllData()
+    localStorage.removeItem(STORAGE_KEY);
  }

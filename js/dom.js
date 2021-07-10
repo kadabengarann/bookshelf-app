@@ -1,5 +1,7 @@
 const UNCOMPLETED_LIST_BOOK_ID = "incompleteBookshelfList";
 const COMPLETED_LIST_BOOK_ID = "completeBookshelfList"; 
+const INPUT_FORM_BOOK = "input_section"; 
+const EDIT_FORM_BOOK = "edit_section"; 
 const BOOK_ITEMID = "itemId";
 
 function addTodo() {
@@ -53,11 +55,13 @@ function makeBook(nameBook, authorBook, yearBook, isCompleted) {
     if(isCompleted){
         btnContainer.append(
             createUnreadButton(),
+            createEditButton(),
             createTrashButton()
         );
     } else {
         btnContainer.append(
             createReadButton(),
+            createEditButton(),
             createTrashButton()
         );
     }
@@ -75,7 +79,7 @@ function addBookToCompleted(bookElement) {
     const listCompleted = document.getElementById(COMPLETED_LIST_BOOK_ID);
     
     const book = findBook(bookElement[BOOK_ITEMID]);
-    // book.isCompleted = true;
+    book.isCompleted = true;
     newBook[BOOK_ITEMID] = book.id;
     
     listCompleted.append(newBook);
@@ -110,7 +114,68 @@ function removeBookFromCompleted(bookElement) {
 
     updateDataToStorage();
 }
+function editBookData(bookElement) {
+    const inputFormField = document.getElementsByClassName(INPUT_FORM_BOOK )[0];
+    const editFormField = document.getElementsByClassName(EDIT_FORM_BOOK)[0];
 
+    // const newBook = makeBook(bookTitle, bookAuthor, bookYear, true);
+    
+    // const listCompleted = document.getElementById(COMPLETED_LIST_BOOK_ID);
+    
+    const book = findBook(bookElement[BOOK_ITEMID]);
+    // book.isCompleted = true;
+    // newBook[BOOK_ITEMID] = book.id;
+    fillForm(book.nameBook, book.authorBook, book.yearBook, book.isCompleted)
+
+    // listCompleted.append(newBook);
+    inputFormField.style.display = "none";
+    editFormField.style.display = "flex";
+
+    window.scrollTo(0,0)
+    // bookElement.remove();
+    // updateDataToStorage();
+}
+
+function fillForm(nameBook, authorBook, yearBook, isCompleted) {
+    document.getElementById("editBookTitle").value = "";
+    document.getElementById("editBookAuthor").value = "";
+    document.getElementById("editBookYear").value = "";
+    document.getElementById("editBookIsComplete").checked = false;
+
+
+    const nameBookField = document.getElementById("editBookTitle");
+    const authorBookField = document.getElementById("editBookAuthor");
+    const yearBookField = document.getElementById("editBookYear");
+    const isCompletedField = document.getElementById("editBookIsComplete");
+
+    nameBookField.value = nameBook;
+    authorBookField.value = authorBook;
+    yearBookField.value = yearBook;
+    isCompletedField.checked = isCompleted;
+
+
+}
+
+function cencelEditBook() {
+    const inputFormField = document.getElementsByClassName(INPUT_FORM_BOOK )[0];
+    const editFormField = document.getElementsByClassName(EDIT_FORM_BOOK)[0];
+
+    const nameBookField = document.getElementById("editBookTitle");
+    const authorBookField = document.getElementById("editBookAuthor");
+    const yearBookField = document.getElementById("editBookYear");
+    const isCompletedField = document.getElementById("editBookIsComplete");
+
+    nameBookField.value = "";
+    authorBookField.value = "";
+    yearBookField.value = "";
+    isCompletedField.checked = false;
+
+    inputFormField.style.display = "flex";
+    editFormField.style.display = "none";
+
+
+
+}
 
 function createButton(buttonTypeClass , eventListener) {
     const button = document.createElement("button");
@@ -134,4 +199,26 @@ function createTrashButton() {
     return createButton("delete-button", function(event){
         removeBookFromCompleted(event.target.parentElement.parentElement);
     });
+}
+function createEditButton() {
+    return createButton("edit-button", function(event){
+        editBookData(event.target.parentElement.parentElement);
+    });
+}
+function findBookName() {
+    const bookList = document.querySelectorAll('#book_title')
+    const keyword = document.querySelector('#searchBookTitle').value
+    console.log("woy");
+    for (const item of bookList) {
+        const nameBook = item.innerHTML
+        if (nameBook.includes(keyword) ) {
+            item.parentNode.style.display = "block";
+            console.log("yes");
+        }else{
+            console.log("no");
+            item.parentNode.style.display = "none";
+            console.log(item.parentNode);
+        }
+    }
+    
 }
