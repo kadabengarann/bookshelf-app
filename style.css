@@ -28,7 +28,22 @@ main {
     padding: 16px;
 
 }
+.message{
+    padding: 1.2em;
+    border-radius: 5px;
+    border: 1px solid black;
+    margin-bottom: 1em;
+}
+.info{
+    background-color: rgb(47, 243, 80);
+    color: #313030;
 
+
+}
+.alert{
+    background-color: rgb(243, 47, 57);
+    color: azure;
+}
 .form_section {
     display: flex;
     flex-direction: column;

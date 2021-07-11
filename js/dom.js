@@ -30,6 +30,11 @@ function addTodo() {
 }
 
    updateDataToStorage();
+   document.getElementById("inputBookTitle").value = "";
+   document.getElementById("inputBookAuthor").value = "";
+   document.getElementById("inputBookYear").value = "";
+   document.getElementById("inputBookIsComplete").checked = false;
+
 }
 
 function makeBook(nameBook, authorBook, yearBook, isCompleted) {
@@ -113,6 +118,8 @@ function removeBookFromCompleted(bookElement) {
     bookElement.remove();
 
     updateDataToStorage();
+    makeMessage("Deleted a Book", "alert")
+
 }
 function editBookData(bookElement) {
     const inputFormField = document.getElementsByClassName(INPUT_FORM_BOOK )[0];
@@ -125,7 +132,7 @@ function editBookData(bookElement) {
     const book = findBook(bookElement[BOOK_ITEMID]);
     // book.isCompleted = true;
     // newBook[BOOK_ITEMID] = book.id;
-    fillForm(book.nameBook, book.authorBook, book.yearBook, book.isCompleted)
+    fillForm(book.id, book.nameBook, book.authorBook, book.yearBook, book.isCompleted)
 
     // listCompleted.append(newBook);
     inputFormField.style.display = "none";
@@ -136,23 +143,71 @@ function editBookData(bookElement) {
     // updateDataToStorage();
 }
 
-function fillForm(nameBook, authorBook, yearBook, isCompleted) {
-    document.getElementById("editBookTitle").value = "";
-    document.getElementById("editBookAuthor").value = "";
-    document.getElementById("editBookYear").value = "";
-    document.getElementById("editBookIsComplete").checked = false;
+function fillForm(id, nameBook, authorBook, yearBook, isCompleted) {
+    document.getElementById("inputBookTitle").value = "";
+    document.getElementById("inputBookAuthor").value = "";
+    document.getElementById("inputBookYear").value = "";
+    document.getElementById("inputBookIsComplete").checked = false;
 
 
+    const idBookField = document.getElementById("editBookId");
     const nameBookField = document.getElementById("editBookTitle");
     const authorBookField = document.getElementById("editBookAuthor");
     const yearBookField = document.getElementById("editBookYear");
     const isCompletedField = document.getElementById("editBookIsComplete");
 
+    idBookField.value = id;
     nameBookField.value = nameBook;
     authorBookField.value = authorBook;
     yearBookField.value = yearBook;
     isCompletedField.checked = isCompleted;
 
+
+}
+
+function updateBookData() {
+    const uncompletedBOOKList = document.getElementById(UNCOMPLETED_LIST_BOOK_ID );
+    const listCompleted = document.getElementById(COMPLETED_LIST_BOOK_ID);
+    const idBookField = document.getElementById("editBookId").value;
+    const nameBookField = document.getElementById("editBookTitle").value;
+    const authorBookField = document.getElementById("editBookAuthor").value;
+    const yearBookField = document.getElementById("editBookYear").value;
+    const isCompletedField = document.getElementById("editBookIsComplete").checked;
+    console.log("name" + nameBookField);
+    console.log("author" + authorBookField);
+    console.log("year" + yearBookField);
+    console.log("iscompleted?" + isCompletedField);
+
+    // const book = makeBook(nameBook, authorBook, yearBook, isCompleted);
+
+    // const bookObject = composeBookObject(nameBook, authorBook, yearBook, isCompleted);
+  
+    const book = findBook(parseInt(idBookField));
+
+    console.log(book);
+    book.nameBook = nameBookField;
+    book.authorBook = authorBookField;
+    book.yearBook = yearBookField;
+    book.isCompleted = isCompletedField;
+
+    console.log(book);
+
+//    book[BOOK_ITEMID] = bookObject.id;
+//    books.push(bookObject);
+ 
+//    if(isCompleted){
+//     listCompleted.append(book);
+//    }else{
+//     uncompletedBOOKList.append(book);
+// }
+
+   updateDataToStorage();
+   clearAllData()
+
+   refreshDataFromBooks()
+
+   cencelEditBook();
+   makeMessage("Edited a Book Data!", "info")
 
 }
 
@@ -172,8 +227,6 @@ function cencelEditBook() {
 
     inputFormField.style.display = "flex";
     editFormField.style.display = "none";
-
-
 
 }
 
@@ -221,4 +274,19 @@ function findBookName() {
         }
     }
     
+}
+
+function makeMessage(message, type) {
+    const check = document.querySelector('.message');
+    if(check){
+        check.remove()
+    }
+    const msg = document.createElement("div");
+    msg.classList.add("message", type);
+    msg.innerHTML = "<h3>" + message + "</h3>"
+
+    const messageContainer = document.querySelector('.message_container');
+
+    messageContainer.append(msg);
+
 }

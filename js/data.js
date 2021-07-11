@@ -97,30 +97,46 @@ function saveData() {
  }
 
  function deleteAllComplete() {
+    let listLength = 0;
+
     for(let i=books.length-1; i >= 0 ; i--){
         if(books[i].isCompleted === true){
             console.log("yo");
             books.splice(i, 1);
         }
     }
-    updateDataToStorage()
-    clearAllData()
 
-    refreshDataFromBooks()
+    if(listLength>0){
+        updateDataToStorage()
+        clearAllData()
+    
+        refreshDataFromBooks()
+        makeMessage("Deleted All Completed Book", "alert")
+    }
+
  }
  function deleteAllIncomplete() {
+    let listLength = 0;
     for(let i=books.length-1; i >= 0 ; i--){
         if(books[i].isCompleted === false){
             console.log("yo");
             books.splice(i, 1);
+            listLength++;
         }
     }
-    updateDataToStorage()
-    clearAllData()
-
-    refreshDataFromBooks()
+    if(listLength>0){
+        updateDataToStorage()
+        clearAllData()
+    
+        refreshDataFromBooks()
+        makeMessage("Deleted All Incompleted Book", "alert")    
+    }
  }
  function deleteAll() {
-     clearAllData()
-    localStorage.removeItem(STORAGE_KEY);
+     if (!(localStorage.getItem(STORAGE_KEY) == null || localStorage.getItem(STORAGE_KEY) == '[]')) {
+        clearAllData()
+        localStorage.removeItem(STORAGE_KEY);
+    
+        makeMessage("Deleted All Book", "alert")
+     }
  }
