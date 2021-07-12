@@ -1,98 +1,204 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Bookshelf Apps</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookshelf App</title>
+
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./assets/css/startingStyle.css">
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
 </head>
+
 <body>
-<header class="head_bar">
-    <h1 class="head_bar__title">Bookshelf Apps</h1>
-</header>
-<main>
-    <div class="message_container">
+    <div class="content overlayStarting">
+        <div class="container">
+            <div class="row">
+                <div class="gambar col-md-6 order-md-2">
+                    <img src="./assets/img/undraw_file_sync_ot38.svg" alt="Image" class="img-fluid">
+                </div>
+                <div class="col-md-6 contents">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="mb-4 logo--section">
+                                <img id="logo_starting" src="./assets/img/logo.png" alt="">
+                                <h3 class="mb-4">Welcome to <br> <strong>Bookshelf App!</strong></h3>
+                                <p class="mb-1">Please enter your name before starting.</p>
+                            </div>
+                            <form action="#" method="post" id="inputNameForm">
+                                <div class="form-group first">
+                                    <label for="username">Your Name</label>
+                                    <input type="text" class="form-control" id="username">
+                                </div>
+                                <input type="submit" value="Start now!" class="btn text-white btn-block btn-primary">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <section class="form_section input_section">
-        <h2>Masukkan Buku Baru</h2>
-        <form id="inputBook">
-            <div class="input">
-                <label for="inputBookTitle">Judul</label>
-                <input id="inputBookTitle" type="text" required>
-            </div>
-            <div class="input">
-                <label for="inputBookAuthor">Penulis</label>
-                <input id="inputBookAuthor" type="text" required>
-            </div>
-            <div class="input">
-                <label for="inputBookYear">Tahun</label>
-                <input id="inputBookYear" type="number" required>
-            </div>
-            <div class="input_inline">
-                <label for="inputBookIsComplete">Selesai dibaca</label>
-                <input id="inputBookIsComplete" type="checkbox">
-            </div>
-            <button id="bookSubmit" type="submit">Masukkan Buku ke rak <span>Belum selesai dibaca</span></button>
-        </form>
-    </section>
-    <section class="form_section edit_section">
-        <h2>Edit Data Buku</h2>
-        <form id="editBook">
-            <div class="input">
-                <input id="editBookId" type="text" required>
-                <label for="inputBookTitle">Judul</label>
-                <input id="editBookTitle" type="text" required>
-            </div>
-            <div class="input">
-                <label for="inputBookAuthor">Penulis</label>
-                <input id="editBookAuthor" type="text" required>
-            </div>
-            <div class="input">
-                <label for="inputBookYear">Tahun</label>
-                <input id="editBookYear" type="number" required>
-            </div>
-            <div class="input_inline">
-                <label for="inputBookIsComplete">Selesai dibaca</label>
-                <input id="editBookIsComplete" type="checkbox">
-            </div>
-            <button id="cancelEdit" type="submit">Batalkan</button>
-            <button id="bookEditSubmit" type="submit">Edit book Data</button>
 
-        </form>
-    </section>
+    <div class="wrapper">
+        <header class="header">
+            <div class="burger-btn" id="burger_btn">
+            </div>
+            <div class="wrapper sidebar card">
+                <div class="appLogo">
+                    <img src="./assets/img/logo.png" alt="" />
+                    <h1>Bookshelf App</h1>
+                    <hr class="mt-2" />
+                </div>
+                <div class="user_data">
+                    <div class="user_profile">
+                        <img src="./assets/img/avatar.png" alt="" />
+                        <p id="user_name">User</p>
+                    </div>
+                    <ul>
+                        <li>
+                            <div>
+                                <img src="./assets/img/incomplete_color.png" alt="" />
+                                <a href="#incompleteBookshelfList">
+                                    Incompleted Books
+                                </a>
+                            </div>
+                            <div class="prof_action">
+                                <p id="incompleted_books">0</p>
+                                <div class="prof_btn btn btn-danger" id="remove-all-incomplete">
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <img src="./assets/img/complete_color.png" alt="" />
+                                <a href="#completeBookshelfList">
+                                    Completed Books
+                                </a>
+                            </div>
+                            <div class="prof_action">
+                                <p id="completed_books">0</p>
+                                <div class="prof_btn btn btn-danger" id="remove-all-complete">
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="setting_btn" class="setting btn btn-secondary"></div>
+            </div>
+        </header>
+        <main>
+            <div class="wrapper">
+                <section class="main-header card">
+                    <h1>Your Bookshelf</h1>
+                </section>
+                <section class="message_container">
+                </section>
 
-    <section class="search_section">
-        <h2>Cari Buku</h2>
-        <form id="searchBook">
-            <label for="searchBookTitle">Judul</label>
-            <input id="searchBookTitle" type="text">
-            <button id="searchSubmit" type="submit">Cari</button>
-        </form>
-    </section>
+                <section class="search-section card">
+                    <form id="searchBook">
+                        <div class="search">
+                            <div class="icon" id="searchSubmit"></div>
 
-    <section class="book_shelf">
-        <h2>Belum selesai dibaca</h2>
-        <button id="remove-all-incomplete">CLEAR ALL</button>
-        <div id="incompleteBookshelfList" class="book_list">
-        </div>
-    </section>
+                            <div class="input">
+                                <input type="text" placeholder="Search..." id="searchBookTitle">
+                            </div>
+                        </div>
+                    </form>
+                </section>
+                <section class="incompleted card book_list_container">
+                    <div class="heading">
+                        <img src="./assets/img/incomplete_color.png" alt="" />
+                        <h3>Incomplete Books</h3>
+                    </div>
+                    <div id="incompleteBookshelfList" class="book_list">
+                    </div>
+                </section>
+                <section class="completed card book_list_container">
+                    <div class="heading">
+                        <img src="./assets/img/complete_color.png" alt="" />
+                        <h3>Completed Books</h3>
+                    </div>
+                    <div id="completeBookshelfList" class="book_list">
+                    </div>
+                </section>
+            </div>
+            <div class="float_container">
+                <div class="floating_btn btn-success" id="add_btn">
 
-    <section class="book_shelf">
-        <h2>Selesai dibaca</h2>
-        <button id="remove-all-complete">CLEAR ALL</button>
+                </div>
+            </div>
+        </main>
+        <footer></footer>
+    </div>
+    <div class="form_container">
+        <section class="form_section input_section card">
+            <h2>Insert new Book</h2>
+            <hr>
+            <form id="inputBook">
+                <div class="input">
+                    <label for="inputBookTitle">Title</label>
+                    <input id="inputBookTitle" type="text" required />
+                </div>
+                <div class="input">
+                    <label for="inputBookAuthor">Author</label>
+                    <input id="inputBookAuthor" type="text" required />
+                </div>
+                <div class="input">
+                    <label for="inputBookYear">Year</label>
+                    <input id="inputBookYear" type="text" pattern="\d*" required maxlength=4 placeholder="Input year"/>
+                </div>
+                <div class="input_inline">
+                    <label for="inputBookIsComplete">Completed ?</label>
+                    <input id="inputBookIsComplete" type="checkbox" />
+                </div>
+                <div class="inputBtn">
+                    <button class="cancelForm btn btn-danger" type="reset">Cancel</button>
+                    <button id="bookSubmit" class="btn btn-success" type="submit">
+                        Insert to <span id="chng">Incomplete Books</span>
+                    </button>
 
-        <div id="completeBookshelfList" class="book_list">
-        </div>
-    </section>
-    <button id="remove-all">CLEAR ALL</button>
-</main>
+                </div>
+            </form>
+        </section>
+        <section class="form_section edit_section card">
+            <h2>Edit Data Buku</h2>
+            <form id="editBook">
+                <div class="input">
+                    <input id="editBookId" type="hidden" required />
+                    <label for="inputBookTitle">Judul</label>
+                    <input id="editBookTitle" type="text" required />
+                </div>
+                <div class="input">
+                    <label for="inputBookAuthor">Penulis</label>
+                    <input id="editBookAuthor" type="text" required />
+                </div>
+                <div class="input">
+                    <label for="inputBookYear">Tahun</label>
+                    <input id="editBookYear" type="number" required />
+                </div>
+                <div class="input_inline">
+                    <label for="editBookIsComplete">Completed ?</label>
+                    <input id="editBookIsComplete" type="checkbox" />
+                </div>
+                <div class="inputBtn">
+                    <button class="cancelForm btn btn-danger" type="reset">Cancel</button>
+                    <button id="bookEditSubmit" class=" btn btn-success" type="submit">Edit book Data</button>
+            </form>
+        </section>
+        <section class="form_section setting_section card">
+            <button id="remove-all-book" class="btn btn-danger">Delete All Book</button>
+            <button id="remove-all-data" class="btn btn-danger">Delete User Data</button>
+            <hr>
+            <button id="cancel-setting" class="cancelForm btn btn-secondary">Cancel</button>
+        </section>
+    </div>
+    <script src="./assets/js/data.js"></script>
+    <script src="./assets/js/dom.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/starting.js"></script>
 
-<script src="./js/data.js"></script>
-<script src="./js/dom.js"></script>
-<script src="./js/script.js"></script>
 </body>
 </html>
