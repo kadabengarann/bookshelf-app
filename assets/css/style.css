@@ -132,21 +132,35 @@ header>.wrapper{
     margin: 2em 0 1em 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     text-align: center;
     gap: 1.1em;
 }
-.user_profile img{
+.user_profile .prof_pic{
     border: solid 3px var(--text1);
     border-radius: 50%;
     height: auto;
     width: 100px;
     background-color: var(--text1);
+    margin: auto;
 }
 .user_profile p{
     font-size: 1.2em;
     font-weight: 500;
 }
+.user_profile>div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.books_count{
+    width: 50px;
+}
+.user_profile>div p{
+    margin: 0;
+}
+
 .user_data ul{
     border-top: 1px solid var(--text1);
 }

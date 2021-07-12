@@ -8,11 +8,13 @@ function fillUserData() {
   const user_name = document.getElementById("user_name");
   const incompleted_books = document.getElementById("incompleted_books");
   const completed_books = document.getElementById("completed_books");
+  const all_books = document.getElementById("books_count_all");
   
 
   user_name.innerText = user.name
   incompleted_books.innerText = user.incompletedBooks
   completed_books.innerText = user.completedBooks
+  all_books.innerText = user.completedBooks + user.incompletedBooks
 
 }
 
@@ -56,7 +58,7 @@ function addTodo() {
 function makeBook(nameBook, authorBook, yearBook, isCompleted) {
   const bookPhoto = document.createElement("div");
   bookPhoto.classList.add("poto");
-  bookPhoto.innerHTML = "<img src=\"./assets/img/book.jpg\">";
+  bookPhoto.innerHTML = "<img src=\"./assets/img/cover_book.png\">";
 
   const bookDetail = document.createElement("div");
   bookDetail.classList.add("book_detail");
