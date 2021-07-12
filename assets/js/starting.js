@@ -15,6 +15,10 @@ function addUser() {
   console.log("name is " + nameUser);
 
   user.name = nameUser;
+  let bookCount = countBook()
+  user.completedBooks = bookCount[1]
+  user.incompletedBooks = bookCount[0]
+
   saveUserData();
 
   overlay.classList.add("move-up");

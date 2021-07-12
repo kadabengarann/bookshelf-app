@@ -1,5 +1,5 @@
-const STORAGE_KEY = "BOOK_SHELF_APPS";
-const USER_STORAGE_KEY = "USER_BOOK_SHELF_APPS";
+const STORAGE_KEY = "BOOKSHELF_APP_STORAGE";
+const USER_STORAGE_KEY = "USER_BOOKSHELF_APP";
 
 let books = [];
 let user = {
@@ -29,6 +29,10 @@ function loadUserData() {
   let data = JSON.parse(serializedData);
 
   if (data !== null) user = data;
+  let bookCount = countBook()
+  user.completedBooks = bookCount[1]
+  user.incompletedBooks = bookCount[0]
+
 }
 function saveUserData() {
   if (user.completedBooks < 0) {
