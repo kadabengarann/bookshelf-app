@@ -67,21 +67,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const revoveUserBtn = document.getElementById("remove-all-data");
   revoveUserBtn.addEventListener("click", function () {
-    if (confirm("Apakah anda ingin menghapus data user?")) {
+    if (confirm("Do you want to delete all user data?")) {
       deleteUserData();
     }
   });
 
   const revoveAllBtn = document.getElementById("remove-all-book");
   revoveAllBtn.addEventListener("click", function () {
-    if (confirm("Apakah anda ingin menghapus semua Buku?")) {
+    if (confirm("Do you want to delete all Books?")) {
       deleteAll();
+      closeForm()
     }
   });
 
   const revoveAllCompleteBtn = document.getElementById("remove-all-complete");
   revoveAllCompleteBtn.addEventListener("click", function () {
-    if (confirm("Apakah anda ingin menghapus semua Completed Buku?")) {
+    if (confirm("Do you want to delete all Completed Books?")) {
       deleteAllComplete();
     }
   });
@@ -90,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "remove-all-incomplete"
   );
   revoveAllIncompleteBtn.addEventListener("click", function () {
-    if (confirm("Apakah anda ingin menghapus semua Incomplete Buku?")) {
+    if (confirm("Do you want to delete all Incomplete Books?")) {
       deleteAllIncomplete();
     }
   });

@@ -166,6 +166,11 @@ function deleteAll() {
     clearAllData();
     localStorage.removeItem(STORAGE_KEY);
 
+    user.completedBooks = 0
+    user.incompletedBooks = 0
+    
+    saveUserData()
+    fillUserData()
     makeMessage("Deleted All Book", "alert-danger");
   }
 }

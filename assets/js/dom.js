@@ -229,8 +229,7 @@ function cencelEditBook() {
   yearBookField.value = "";
   isCompletedField.checked = false;
 
-  inputFormField.style.display = "flex";
-  editFormField.style.display = "none";
+  closeForm()
 }
 
 function createButton(clas, class1, class2, eventListener) {
